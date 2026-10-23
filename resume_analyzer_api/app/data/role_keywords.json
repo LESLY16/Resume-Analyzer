@@ -1,0 +1,218 @@
+{
+  "software developer": {
+    "keywords": [
+      "python",
+      "javascript",
+      "react",
+      "django",
+      "flask",
+      "sql",
+      "rest api",
+      "git",
+      "docker"
+    ]
+  },
+
+  "full stack developer": {
+    "keywords": [
+      "react",
+      "redux",
+      "javascript",
+      "python",
+      "django",
+      "flask",
+      "node",
+      "mysql",
+      "api development",
+      "debugging"
+    ]
+  },
+
+  "python developer": {
+    "keywords": [
+      "python",
+      "django",
+      "flask",
+      "fastapi",
+      "sql",
+      "rest api",
+      "oop",
+      "pytest",
+      "docker",
+      "linux"
+    ]
+  },
+
+  "python automation engineer": {
+    "keywords": [
+      "python",
+      "automation",
+      "selenium",
+      "fastapi",
+      "pytest",
+      "linux",
+      "docker"
+    ]
+  },
+
+  "frontend developer": {
+    "keywords": [
+      "javascript",
+      "react",
+      "redux",
+      "html",
+      "css",
+      "typescript",
+      "webpack",
+      "ui components",
+      "responsive design"
+    ]
+  },
+
+  "backend developer": {
+    "keywords": [
+      "python",
+      "django",
+      "flask",
+      "fastapi",
+      "rest api",
+      "sql",
+      "postgresql",
+      "mysql",
+      "docker",
+      "authentication"
+    ]
+  },
+
+  "devops engineer": {
+    "keywords": [
+      "ci/cd",
+      "docker",
+      "kubernetes",
+      "jenkins",
+      "terraform",
+      "linux",
+      "monitoring",
+      "aws",
+      "infrastructure automation"
+    ]
+  },
+
+  "data analyst": {
+    "keywords": [
+      "sql",
+      "excel",
+      "python",
+      "pandas",
+      "data visualization",
+      "power bi",
+      "tableau",
+      "statistics"
+    ]
+  },
+
+  "data engineer": {
+    "keywords": [
+      "python",
+      "sql",
+      "etl",
+      "airflow",
+      "spark",
+      "aws",
+      "data pipelines",
+      "big data",
+      "hadoop"
+    ]
+  },
+
+  "machine learning engineer": {
+    "keywords": [
+      "python",
+      "tensorflow",
+      "pytorch",
+      "scikit-learn",
+      "ml models",
+      "data preprocessing",
+      "feature engineering",
+      "deployment",
+      "docker"
+    ]
+  },
+
+  "cloud engineer": {
+    "keywords": [
+      "aws",
+      "azure",
+      "gcp",
+      "docker",
+      "kubernetes",
+      "terraform",
+      "cloud architecture",
+      "linux"
+    ]
+  },
+
+  "qa engineer": {
+    "keywords": [
+      "manual testing",
+      "automation testing",
+      "selenium",
+      "pytest",
+      "test cases",
+      "bug tracking",
+      "api testing",
+      "postman"
+    ]
+  },
+
+  "mobile app developer": {
+    "keywords": [
+      "react native",
+      "flutter",
+      "android",
+      "ios",
+      "javascript",
+      "dart",
+      "mobile ui",
+      "api integration"
+    ]
+  },
+
+  "salesforce developer": {
+    "keywords": [
+      "apex",
+      "visualforce",
+      "lwc",
+      "salesforce admin",
+      "soql",
+      "triggers",
+      "flows",
+      "integration"
+    ]
+  },
+
+  "cybersecurity analyst": {
+    "keywords": [
+      "network security",
+      "vulnerability assessment",
+      "siem",
+      "firewalls",
+      "incident response",
+      "linux",
+      "threat analysis"
+    ]
+  },
+
+  "ai engineer": {
+    "keywords": [
+      "python",
+      "llms",
+      "transformers",
+      "pytorch",
+      "tensorflow",
+      "nlp",
+      "model deployment",
+      "vector databases"
+    ]
+  }
+}

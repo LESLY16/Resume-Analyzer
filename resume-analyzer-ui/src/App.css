@@ -1,0 +1,149 @@
+.page {
+  background: #f5f6fa;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.visitor-label {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
+  font-size: 1rem;
+  background: #eef3ff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.card,
+.result-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #357ac8;
+}
+
+button:disabled {
+  background: #7fb3e4;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.score-box {
+  background: #eef3ff;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.score-box h4 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tag {
+  background: #dfe6e9;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+.sections {
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.suggestions-list {
+  border: 1px solid #ccc;
+  background: white;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f0f0f0;
+}
+
+.suggestions-list {
+  border: 1px solid #ccc;
+  background: white;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+  max-height: 150px;
+  overflow-y: auto;
+}
