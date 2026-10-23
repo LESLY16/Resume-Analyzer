@@ -17,7 +17,10 @@ app = FastAPI()
 # CORS for Vite frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+    "http://localhost:5173",
+    "https://resume-analyzer-1-jccr.onrender.com"
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
