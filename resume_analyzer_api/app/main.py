@@ -9,9 +9,6 @@ from app.services.keyword_engine import analyze_keywords, ROLE_KEYWORDS
 from app.services.scoring_engine import compute_scores
 from app.services.suggestions import generate_resume_suggestions
 
-import json
-import os
-
 app = FastAPI()
 
 # CORS for Vite frontend
@@ -25,23 +22,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-VISITOR_FILE = os.path.join(os.path.dirname(__file__), "visitor_count.json")
-
-
-def load_count() -> int:
-    if not os.path.exists(VISITOR_FILE):
-        with open(VISITOR_FILE, "w", encoding="utf-8") as f:
-            json.dump({"count": 0}, f)
-    with open(VISITOR_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)["count"]
-
-
-def increment_count() -> int:
-    count = load_count() + 1
-    with open(VISITOR_FILE, "w", encoding="utf-8") as f:
-        json.dump({"count": count}, f)
-    return count
-
 
 @app.get("/")
 def home():
@@ -51,11 +31,6 @@ def home():
 @app.get("/roles")
 def get_roles():
     return {"roles": list(ROLE_KEYWORDS.keys())}
-
-
-@app.get("/visitor-count/increment")
-def visitor_increment():
-    return {"count": increment_count()}
 
 
 @app.post("/analyze", response_model=AnalysisResponse)
