@@ -79,7 +79,7 @@ function App() {
         `http://localhost:8000/analyze?target_role=${encodeURIComponent(role)}`,
         {
           method: "POST",
-          headers: { "X-API-Key": "demo-key-123" },
+          headers: { "X-API-Key": "ra_7Kx92mLpQwZf4Nn8TyH3RsBc" },
           body: formData
         }
       );
