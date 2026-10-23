@@ -1,6 +1,6 @@
 from fastapi import Header, HTTPException
 
-API_KEY = "demo-key-123"  # match your frontend header
+API_KEY = "ra_7Kx92mLpQwZf4Nn8TyH3RsBc"  # match your frontend header
 
 
 def validate_api_key(x_api_key: str = Header(...)):
