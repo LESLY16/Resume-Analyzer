@@ -7,18 +7,9 @@ function App() {
   const [filteredRoles, setFilteredRoles] = useState([]);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [visitorCount, setVisitorCount] = useState(null);
 
   const [errorMessage, setErrorMessage] = useState("");   // INLINE ERROR
   const [isRoleValid, setIsRoleValid] = useState(true);   // VALIDATION FLAG
-
-  // Visitor counter
-  useEffect(() => {
-    fetch("https://resume-analyzer-ubat.onrender.com/visitor-count/increment")
-      .then(res => res.json())
-      .then(data => setVisitorCount(data.count))
-      .catch(() => {});
-  }, []);
 
   // Fetch available roles
   useEffect(() => {
@@ -109,10 +100,6 @@ function App() {
     <div className="page">
       <div className="container">
         <h1 className="title">Resume Analyzer</h1>
-
-        {visitorCount !== null && (
-          <p className="visitor-label">Visitor Count: {visitorCount}</p>
-        )}
 
         <div className="card">
           <label>Target Role</label>
