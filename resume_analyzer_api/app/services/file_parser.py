@@ -4,24 +4,19 @@ import docx
 from docx.opc.exceptions import PackageNotFoundError
 from fastapi import UploadFile, HTTPException
 
-from pdf2image import convert_from_bytes
-import pytesseract
-from PIL import Image
-
 
 async def parse_file(file: UploadFile) -> str:
     filename = (file.filename or "").lower()
     content = await file.read()
 
     # ---------------------------------------------------------
-    # PDF EXTRACTION (Text → OCR fallback)
+    # PDF EXTRACTION
     # ---------------------------------------------------------
     if filename.endswith(".pdf"):
-
-        # 1) Try normal text extraction via PyMuPDF
         try:
-            pdf_doc: fitz.Document = fitz.open(stream=content, filetype="pdf")
-            text_parts: list[str] = []
+            pdf_doc = fitz.open(stream=content, filetype="pdf")
+
+            text_parts = []
 
             for page_number in range(pdf_doc.page_count):
                 page = pdf_doc.load_page(page_number)
@@ -30,37 +25,18 @@ async def parse_file(file: UploadFile) -> str:
                 if isinstance(page_text, str) and page_text.strip():
                     text_parts.append(page_text)
 
-            extracted_text = "".join(text_parts).strip()
+            extracted_text = "\n".join(text_parts).strip()
 
             if extracted_text:
                 return extracted_text
 
-        except Exception:
-            pass
-
-        # 2) OCR fallback for scanned PDFs
-        try:
-            images = convert_from_bytes(content)
-            ocr_text_parts: list[str] = []
-
-            for img in images:
-                if not isinstance(img, Image.Image):
-                    img = img.convert("RGB")
-
-                ocr_text = pytesseract.image_to_string(img)
-
-                if isinstance(ocr_text, str) and ocr_text.strip():
-                    ocr_text_parts.append(ocr_text)
-
-            ocr_text = "\n".join(ocr_text_parts).strip()
-
-            if ocr_text:
-                return ocr_text
-
             raise HTTPException(
                 status_code=400,
-                detail="Unable to extract text from PDF (even with OCR)."
+                detail="Resume is incompatible or scanned. Please upload a text-based PDF or DOCX file."
             )
+
+        except HTTPException:
+            raise
 
         except Exception:
             raise HTTPException(
@@ -76,30 +52,49 @@ async def parse_file(file: UploadFile) -> str:
             word_doc = docx.Document(io.BytesIO(content))
 
             # Extract paragraphs
-            paragraph_text = "\n".join([p.text for p in word_doc.paragraphs])
+            paragraph_text = "\n".join(
+                p.text for p in word_doc.paragraphs
+            )
 
             # Extract tables
-            table_text_parts: list[str] = []
+            table_text_parts = []
 
             for table in word_doc.tables:
                 for row in table.rows:
-                    row_cells = [cell.text.strip() for cell in row.cells]
-                    row_text = " | ".join([c for c in row_cells if c])
+                    row_cells = [
+                        cell.text.strip()
+                        for cell in row.cells
+                    ]
+
+                    row_text = " | ".join(
+                        c for c in row_cells if c
+                    )
+
                     if row_text:
                         table_text_parts.append(row_text)
 
             table_text = "\n".join(table_text_parts)
 
-            # Combine both
-            combined_text = (paragraph_text + "\n" + table_text).strip()
+            combined_text = (
+                paragraph_text + "\n" + table_text
+            ).strip()
 
-            return combined_text
+            if combined_text:
+                return combined_text
+
+            raise HTTPException(
+                status_code=400,
+                detail="Resume content could not be extracted from DOCX."
+            )
 
         except PackageNotFoundError:
             raise HTTPException(
                 status_code=400,
                 detail="Invalid or corrupted DOCX file."
             )
+
+        except HTTPException:
+            raise
 
         except Exception:
             raise HTTPException(
@@ -108,9 +103,9 @@ async def parse_file(file: UploadFile) -> str:
             )
 
     # ---------------------------------------------------------
-    # TXT fallback
+    # UNSUPPORTED FILE TYPES
     # ---------------------------------------------------------
-    try:
-        return content.decode("utf-8", errors="ignore")
-    except Exception:
-        return str(content)
+    raise HTTPException(
+        status_code=400,
+        detail="Unsupported file type. Please upload PDF or DOCX."
+    )
