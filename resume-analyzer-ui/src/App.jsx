@@ -14,7 +14,7 @@ function App() {
 
   // Visitor counter
   useEffect(() => {
-    fetch("http://localhost:8000/visitor-count/increment")
+    fetch("https://resume-analyzer-ubat.onrender.com/visitor-count/increment")
       .then(res => res.json())
       .then(data => setVisitorCount(data.count))
       .catch(() => {});
@@ -22,7 +22,7 @@ function App() {
 
   // Fetch available roles
   useEffect(() => {
-    fetch("http://localhost:8000/roles")
+    fetch("https://resume-analyzer-ubat.onrender.com/roles")
       .then(res => res.json())
       .then(data => setRoles(data.roles))
       .catch(() => console.error("Error loading roles"));
@@ -76,7 +76,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/analyze?target_role=${encodeURIComponent(role)}`,
+        `https://resume-analyzer-ubat.onrender.com/analyze?target_role=${encodeURIComponent(role)}`,
         {
           method: "POST",
           headers: { "X-API-Key": "ra_7Kx92mLpQwZf4Nn8TyH3RsBc" },
